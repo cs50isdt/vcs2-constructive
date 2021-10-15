@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calc(int left, char op, int right) {
+long long calc(long long left, char op, long long right) {
   switch (op) {
   case '+':
     return left + right;
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
   const char *right_str = argv[3];
   errno = 0;
   char *endptr;
-  int left = strtol(left_str, &endptr, 10);
+  long long left = strtoll(left_str, &endptr, 10);
   if (left_str == endptr) {
     errno = EINVAL;
   }
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   errno = 0;
-  int right = strtol(right_str, &endptr, 10);
+  long long right = strtoll(right_str, &endptr, 10);
   if (right_str == endptr) {
     errno = EINVAL;
   }
@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
     perror(argv[0]);
     return EXIT_FAILURE;
   }
-  int result = calc(left, op_str[0], right);
-  fprintf(stdout, "%d\n", result);
+  long long result = calc(left, op_str[0], right);
+  fprintf(stdout, "%lld\n", result);
   return 0;
 }
