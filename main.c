@@ -41,9 +41,7 @@ int main(int argc, char **argv) {
             argv[0]);
     return EXIT_FAILURE;
   }
-  const char *left_str = argv[1];
-  const char *op_str = argv[2];
-  const char *right_str = argv[3];
+  const char *left_str = argv[1], *op_str = argv[2], *right_str = argv[3];
   int left;
   if (to_int(left_str, &left) != 0) {
     perror(argv[0]);
