@@ -20,7 +20,7 @@ int calc(int left, char op, int right) {
 
 // Converts the string str into an integer using strtol.
 // Returns 1 and stores the result in resultp on success.
-// Returns 0 otherwise.
+// Returns 0 and sets errno otherwise.
 bool to_int(const char *str, int *resultp) {
   char *endptr;
   errno = 0;
