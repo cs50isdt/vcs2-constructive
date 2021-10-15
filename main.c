@@ -17,6 +17,9 @@ int calc(int left, char op, int right) {
   exit(EXIT_FAILURE);
 }
 
+// Converts the string str into an integer using strtol.
+// Returns 0 and stores the result in resultp on success.
+// Returns -1 otherwise.
 int to_int(const char *str, int *resultp) {
   char *endptr;
   errno = 0;
