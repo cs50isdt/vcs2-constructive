@@ -6,6 +6,7 @@ main: main.c
 .PHONY: test
 test: main
 	./main-tests.sh
+	@echo "Tests passed!"
 
 .PHONY: clean
 clean:

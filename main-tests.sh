@@ -13,7 +13,9 @@ expect_eq() {
 }
 
 expect_error() {
-  ./main "$1" "$2" "$3" > /dev/null && die "Expected '$1 $2 $3' to be an error but it wasn't"
+  ./main "$1" "$2" "$3" > /dev/null 2> /dev/null \
+    && die "Expected '$1 $2 $3' to be an error but it wasn't" \
+    || true
 }
 
 expect_eq 3 1 + 2
