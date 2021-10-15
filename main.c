@@ -18,8 +18,8 @@ int calc(int left, char op, int right) {
 }
 
 // Converts the string str into an integer using strtol.
-// Returns 0 and stores the result in resultp on success.
-// Returns -1 otherwise.
+// Returns 1 and stores the result in resultp on success.
+// Returns 0 otherwise.
 int to_int(const char *str, int *resultp) {
   char *endptr;
   errno = 0;
@@ -28,10 +28,10 @@ int to_int(const char *str, int *resultp) {
     errno = EINVAL;
   }
   if (errno != 0) {
-    return -1;
+    return 0;
   }
   *resultp = result;
-  return 0;
+  return 1;
 }
 
 int main(int argc, char **argv) {
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
   }
   const char *left_str = argv[1], *op_str = argv[2], *right_str = argv[3];
   int left;
-  if (to_int(left_str, &left) != 0) {
+  if (!to_int(left_str, &left)) {
     perror(argv[0]);
     return EXIT_FAILURE;
   }
@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   int right;
-  if (to_int(right_str, &right) != 0) {
+  if (!to_int(right_str, &right)) {
     perror(argv[0]);
     return EXIT_FAILURE;
   }
