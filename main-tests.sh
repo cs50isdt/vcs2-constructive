@@ -8,12 +8,12 @@ die() {
 }
 
 expect_eq() {
-  RESULT="$(./main "$2" "$3" "$4")"
+  RESULT="$(./calc "$2" "$3" "$4")"
   [ "$RESULT" = "$1" ] || die "Expected '$2 $3 $4' == $1 but got $RESULT"
 }
 
 expect_error() {
-  ./main "$1" "$2" "$3" > /dev/null 2> /dev/null \
+  ./calc "$1" "$2" "$3" > /dev/null 2> /dev/null \
     && die "Expected '$1 $2 $3' to be an error but it wasn't" \
     || true
 }

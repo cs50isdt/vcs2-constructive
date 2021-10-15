@@ -1,13 +1,13 @@
-all: main
+all: calc
 
-main: main.c
-	gcc main.c -o main
+calc: main.c
+	gcc main.c -o calc
 
 .PHONY: test
-test: main
+test: calc
 	./main-tests.sh
 	@echo "Tests passed!"
 
 .PHONY: clean
 clean:
-	rm -f main
+	rm -f calc
