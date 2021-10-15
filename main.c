@@ -1,4 +1,5 @@
 #include <errno.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,7 +21,7 @@ int calc(int left, char op, int right) {
 // Converts the string str into an integer using strtol.
 // Returns 1 and stores the result in resultp on success.
 // Returns 0 otherwise.
-int to_int(const char *str, int *resultp) {
+bool to_int(const char *str, int *resultp) {
   char *endptr;
   errno = 0;
   int result = strtol(str, &endptr, 10);
@@ -28,10 +29,10 @@ int to_int(const char *str, int *resultp) {
     errno = EINVAL;
   }
   if (errno != 0) {
-    return 0;
+    return false;
   }
   *resultp = result;
-  return 1;
+  return true;
 }
 
 int main(int argc, char **argv) {
