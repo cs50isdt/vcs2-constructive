@@ -28,7 +28,11 @@ int main(int argc, char **argv) {
   const char *op_str = argv[2];
   const char *right_str = argv[3];
   errno = 0;
-  int left = strtol(left_str, NULL, 10);
+  char *endptr;
+  int left = strtol(left_str, &endptr, 10);
+  if (left_str == endptr) {
+    errno = EINVAL;
+  }
   if (errno != 0) {
     perror(argv[0]);
     return EXIT_FAILURE;
@@ -38,7 +42,10 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   errno = 0;
-  int right = strtol(right_str, NULL, 10);
+  int right = strtol(right_str, &endptr, 10);
+  if (right_str == endptr) {
+    errno = EINVAL;
+  }
   if (errno != 0) {
     perror(argv[0]);
     return EXIT_FAILURE;
