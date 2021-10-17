@@ -25,3 +25,5 @@ expect_eq 20 100 / 5
 
 expect_error 1 + qwerty
 expect_error qwerty + 2
+
+expect_eq 100000000000 200000000000 / 2
