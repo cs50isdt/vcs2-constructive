@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+long exponentiate(long base, long exp) {
+  long result = 1;
+  while (exp-- > 0) {
+    result *= base;
+  }
+  return result;
+}
+
 int calc(int left, char op, int right) {
   switch (op) {
   case '+':
@@ -14,6 +22,8 @@ int calc(int left, char op, int right) {
     return left / right;
   case  '%':
     return left % right;
+  case '^':
+    return exponentiate(left, right);
   }
   fprintf(stderr, "Unrecognized op `%c'.\n", op);
   exit(EXIT_FAILURE);
@@ -23,7 +33,7 @@ int main(int argc, char **argv) {
   if (argc != 4) {
     fprintf(
         stderr,
-        "Usage: %s <num> <op> <num>\nWhere <op> is one of +, -, *, /, %%.\n",
+        "Usage: %s <num> <op> <num>\nWhere <op> is one of +, -, *, /, %%, ^.\n",
         argv[0]);
     return EXIT_FAILURE;
   }

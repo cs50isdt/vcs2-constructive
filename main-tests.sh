@@ -21,6 +21,8 @@ expect_eq -1 3 - 4
 expect_eq 10 2 '*' 5
 expect_eq 20 100 / 5
 expect_eq 3 13 % 10
+expect_eq 1 2 ^ 0
+expect_eq 64 2 ^ 6
 
 expect_error 1 + qwerty
 expect_error qwerty + 2
