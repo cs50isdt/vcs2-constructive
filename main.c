@@ -12,6 +12,8 @@ int calc(int left, char op, int right) {
     return left * right;
   case '/':
     return left / right;
+  case  '%':
+    return left % right;
   }
   fprintf(stderr, "Unrecognized op `%c'.\n", op);
   exit(EXIT_FAILURE);
@@ -19,9 +21,10 @@ int calc(int left, char op, int right) {
 
 int main(int argc, char **argv) {
   if (argc != 4) {
-    fprintf(stderr,
-            "Usage: %s <num> <op> <num>\nWhere <op> is one of +, -, *, /.\n",
-            argv[0]);
+    fprintf(
+        stderr,
+        "Usage: %s <num> <op> <num>\nWhere <op> is one of +, -, *, /, %%.\n",
+        argv[0]);
     return EXIT_FAILURE;
   }
   const char *left_str = argv[1];
